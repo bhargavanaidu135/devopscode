@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pulling Code') {
+            steps {
+                echo 'Code successfully pulled..'
+                git 'https://github.com/ravi2krishna/maven-webapp.git'
+            }
+        }
+        stage('Compile') {
+            steps {
+                echo 'Compiling Sources..'
+                sh '/usr/bin/mvn compile'    
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Unit Testing..'
+                sh '/usr/bin/mvn test'    
+            }
+        }
+        stage('Package') {
+            steps {
+                echo 'Packaging..'
+                sh '/usr/bin/mvn package'    
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}

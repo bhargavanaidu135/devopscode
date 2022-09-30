@@ -1,3 +1,4 @@
+#this is the title of my pipeline script
 pipeline {
     agent any
 
